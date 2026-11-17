@@ -1,0 +1,111 @@
+:root {
+  --red: #d8121b;
+  --blue: #a9cdf2;
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Blue gingham: two translucent stripe layers cross over a white base */
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+  background-color: var(--white);
+  background-image:
+    repeating-linear-gradient(0deg,  rgba(169,205,242,.55) 0 28px, transparent 28px 56px),
+    repeating-linear-gradient(90deg, rgba(169,205,242,.55) 0 28px, transparent 28px 56px);
+  font-family: 'Patrick Hand', 'Comic Sans MS', cursive;
+  font-size: 1.25rem;
+  color: var(--red);
+}
+
+.stage {
+  width: min(520px, 100%);
+  text-align: center;
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+/* Crayon-style red headings */
+h1, .day, .clock, .date, .result, button {
+  font-family: 'Gochi Hand', 'Comic Sans MS', cursive;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1;
+  text-shadow: .5px .5px 0 rgba(216,18,27,.55), -.5px 0 0 rgba(216,18,27,.4);
+}
+
+h1 { font-size: clamp(2.4rem, 11vw, 4.2rem); transform: rotate(-2deg); }
+.day { font-size: clamp(1.8rem, 8vw, 3rem); transform: rotate(1.5deg); }
+
+.clock { font-size: clamp(2.6rem, 14vw, 5.4rem); font-variant-numeric: tabular-nums; }
+.ampm { font-size: .45em; }
+
+.date { font-size: clamp(1.5rem, 6vw, 2.4rem); transform: rotate(-1deg); }
+
+.small { font-size: 1.1rem; }
+
+a { color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+a:focus-visible, input:focus-visible, button:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
+}
+
+/* Form */
+form {
+  width: 100%;
+  display: grid;
+  gap: 6px;
+  text-align: left;
+  padding: 22px;
+  background: rgba(255,255,255,.92);
+  border: 3px solid var(--red);
+  border-radius: 14px 6px 16px 8px;
+  transform: rotate(.6deg);
+}
+label { font-size: 1.15rem; }
+input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font: inherit;
+  color: var(--red);
+  background: var(--white);
+  border: 2px solid var(--red);
+  border-radius: 8px 4px 9px 5px;
+}
+input::placeholder { color: rgba(216,18,27,.5); }
+
+button {
+  margin-top: 4px;
+  padding: 12px;
+  font-size: 1.6rem;
+  color: var(--white);
+  background: var(--red);
+  border: 0;
+  border-radius: 6px 12px 6px 10px;
+  cursor: pointer;
+}
+button:hover { background: #b50e16; }
+
+/* Result messages */
+.result {
+  width: 100%;
+  padding: 20px 18px;
+  font-size: clamp(1.6rem, 7vw, 2.6rem);
+  line-height: 1.15;
+  border-radius: 14px 6px 16px 8px;
+}
+.result.granted { background: rgba(255,255,255,.92); border: 3px solid var(--red); }
+.result.denied  { background: var(--red); color: var(--white); text-shadow: none; }
+
+.note {
+  padding: 12px;
+  font-size: 1rem;
+  background: var(--white);
+  border: 2px dashed var(--red);
+}
+.note code { background: #fde3e4; padding: 2px 6px; }
